@@ -12,17 +12,22 @@ import javax.swing.SpringLayout;
 import converter.controller.Controller;
 import converter.model.Converter;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * The main GUI for the Converter application.
  * 
  * @author Sam Robinson
- * @version 1.1 Created the Panel, added all necessary components to the Panel,
+ * @version 1.4 Created the Panel, added all necessary components to the Panel,
  *          added documentation, added properties to the setupLayout method make
- *          the application window more appealing.
+ *          the application window more appealing, added convertButton listener, added Enter Key listener,
+ *          changed background color.
  */
 public class GUIPanel extends JPanel
 {
@@ -150,6 +155,7 @@ public class GUIPanel extends JPanel
 		this.add(toBox);
 
 		this.setSize(600, 450);
+		this.setBackground(new Color (200, 200, 200));
 	}
 
 	/**
@@ -203,6 +209,33 @@ public class GUIPanel extends JPanel
 
 				outputArea.append(output);
 
+			}
+			
+		});
+		
+		
+		inputField.addKeyListener(new KeyListener()
+		{
+			public void keyPressed(KeyEvent e)
+			{
+				if(e.getKeyChar() == KeyEvent.VK_ENTER)
+				{
+					outputArea.setText("");
+
+					String output = baseController.determineFunction(fromBox.getSelectedIndex(), toBox.getSelectedIndex(), inputField.getText());
+
+					outputArea.append(output);
+				}
+			}
+			
+			public void keyReleased(KeyEvent e)
+			{
+				
+			}
+			
+			public void keyTyped(KeyEvent e)
+			{
+				
 			}
 		});
 	}
