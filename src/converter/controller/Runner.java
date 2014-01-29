@@ -11,7 +11,6 @@ public class Runner
 		Controller myApp = new Controller();
 		
 		myApp.start();
-
 	}
 
 }
