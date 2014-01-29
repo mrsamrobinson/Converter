@@ -66,6 +66,37 @@ public class Controller
 		if (currentFunction.equals("00"))
 		{
 			// Binary to Binary.
+			
+			char letter = 0;
+			
+			boolean isBinary = true;
+			
+			for(int counter = 0; counter < currentInput.length() && isBinary ; counter++)
+			{
+				letter = currentInput.charAt(counter);
+				
+				//Tests if it is a binary number.
+				if(letter == '0' || letter == '1')
+				{
+					isBinary = true;
+				}
+				else
+				{
+					isBinary = false;
+				}
+				
+				
+			}
+			
+			if(isBinary)
+			{
+				// Gives the current input as the output.
+				output = currentInput;
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(converterFrame, "This is not a binary number");
+			}
 
 			// Gives the current input as the output.
 			output = currentInput;
@@ -87,16 +118,75 @@ public class Controller
 		else if (currentFunction.equals("01"))
 		{
 			// Binary to Decimal.
-
-			// Runs a custom built conversion process.
-			output = binToDec(currentInput);
+			
+			char letter = 0;
+			
+			boolean isBinary = true;
+			
+			for(int counter = 0; counter < currentInput.length() && isBinary ; counter++)
+			{
+				letter = currentInput.charAt(counter);
+				
+				//Tests if it is a binary number.
+				if(letter == '0' || letter == '1')
+				{
+					isBinary = true;
+				}
+				else
+				{
+					isBinary = false;
+				}
+				
+				
+			}
+			
+			if(isBinary)
+			{
+				// Runs a custom built conversion process.
+				output = binToDec(currentInput);
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(converterFrame, "This is not a binary number");
+			}
+			
 		}
 		else if (currentFunction.equals("02"))
 		{
 			// Binary to Hexadecimal.
 
-			// Uses built in java method.
-			output = new BigInteger(currentInput, 2).toString(16);
+			char letter = 0;
+			
+			boolean isBinary = true;
+			
+			for(int counter = 0; counter < currentInput.length() && isBinary ; counter++)
+			{
+				letter = currentInput.charAt(counter);
+				
+				//Tests if it is a binary number.
+				if(letter == '0' || letter == '1')
+				{
+					isBinary = true;
+				}
+				else
+				{
+					isBinary = false;
+				}
+				
+			}
+			
+			if(isBinary)
+			{
+				// Uses built in java method.
+				output = new BigInteger(currentInput, 2).toString(16);
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(converterFrame, "This is not a binary number");
+			}
+			
+			output = output.toUpperCase();
+			
 		}
 		else if (currentFunction.equals("10"))
 		{
@@ -119,6 +209,8 @@ public class Controller
 			String inBinary = Integer.toBinaryString(binary);
 
 			output = new BigInteger(inBinary, 2).toString(16);
+			
+			output = output.toUpperCase();
 		}
 		else if (currentFunction.equals("20"))
 		{
@@ -139,7 +231,6 @@ public class Controller
 			int temp = Integer.parseInt(currentInput, 16);
 
 			output = Integer.toString(temp);
-
 		}
 
 		return output;
