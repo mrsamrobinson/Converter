@@ -36,8 +36,6 @@ public class GUIPanel extends JPanel
 	 */
 	private Controller baseController;
 
-	private Converter baseConverter;
-
 	/**
 	 * Creates a new JComboBox.
 	 */
