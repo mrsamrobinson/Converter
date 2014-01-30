@@ -66,17 +66,17 @@ public class Controller
 		if (currentFunction.equals("00"))
 		{
 			// Binary to Binary.
-			
+
 			char letter = 0;
-			
+
 			boolean isBinary = true;
-			
-			for(int counter = 0; counter < currentInput.length() && isBinary ; counter++)
+
+			for (int counter = 0; counter < currentInput.length() && isBinary; counter++)
 			{
 				letter = currentInput.charAt(counter);
-				
-				//Tests if it is a binary number.
-				if(letter == '0' || letter == '1')
+
+				// Tests if it is a binary number.
+				if (letter == '0' || letter == '1')
 				{
 					isBinary = true;
 				}
@@ -84,11 +84,10 @@ public class Controller
 				{
 					isBinary = false;
 				}
-				
-				
+
 			}
-			
-			if(isBinary)
+
+			if (isBinary)
 			{
 				// Gives the current input as the output.
 				output = currentInput;
@@ -118,17 +117,17 @@ public class Controller
 		else if (currentFunction.equals("01"))
 		{
 			// Binary to Decimal.
-			
+
 			char letter = 0;
-			
+
 			boolean isBinary = true;
-			
-			for(int counter = 0; counter < currentInput.length() && isBinary ; counter++)
+
+			for (int counter = 0; counter < currentInput.length() && isBinary; counter++)
 			{
 				letter = currentInput.charAt(counter);
-				
-				//Tests if it is a binary number.
-				if(letter == '0' || letter == '1')
+
+				// Tests if it is a binary number.
+				if (letter == '0' || letter == '1')
 				{
 					isBinary = true;
 				}
@@ -136,11 +135,10 @@ public class Controller
 				{
 					isBinary = false;
 				}
-				
-				
+
 			}
-			
-			if(isBinary)
+
+			if (isBinary)
 			{
 				// Runs a custom built conversion process.
 				output = binToDec(currentInput);
@@ -149,22 +147,22 @@ public class Controller
 			{
 				JOptionPane.showMessageDialog(converterFrame, "This is not a binary number");
 			}
-			
+
 		}
 		else if (currentFunction.equals("02"))
 		{
 			// Binary to Hexadecimal.
 
 			char letter = 0;
-			
+
 			boolean isBinary = true;
-			
-			for(int counter = 0; counter < currentInput.length() && isBinary ; counter++)
+
+			for (int counter = 0; counter < currentInput.length() && isBinary; counter++)
 			{
 				letter = currentInput.charAt(counter);
-				
-				//Tests if it is a binary number.
-				if(letter == '0' || letter == '1')
+
+				// Tests if it is a binary number.
+				if (letter == '0' || letter == '1')
 				{
 					isBinary = true;
 				}
@@ -172,10 +170,10 @@ public class Controller
 				{
 					isBinary = false;
 				}
-				
+
 			}
-			
-			if(isBinary)
+
+			if (isBinary)
 			{
 				// Uses built in java method.
 				output = new BigInteger(currentInput, 2).toString(16);
@@ -184,33 +182,52 @@ public class Controller
 			{
 				JOptionPane.showMessageDialog(converterFrame, "This is not a binary number");
 			}
-			
+
 			output = output.toUpperCase();
-			
+
 		}
 		else if (currentFunction.equals("10"))
 		{
 			// Decimal to Binary.
 
-			// Uses built in java method.
-			int binary = Integer.parseInt(currentInput);
+			if (currentInput.length() >= 10)
+			{
+				JOptionPane.showMessageDialog(converterFrame, "Input is too long.");
+			}
+			else
+			{
 
-			String inBinary = Integer.toBinaryString(binary);
+				// Uses built in java method.
+				int binary = Integer.parseInt(currentInput);
 
-			output = inBinary;
+				String inBinary = Integer.toBinaryString(binary);
+
+				output = inBinary;
+
+			}
+
 		}
 		else if (currentFunction.equals("12"))
 		{
 			// Decimal to Hexadecimal.
 
-			// Converts decimal to Binary, then from Binary to Hexadecimal.
-			int binary = Integer.parseInt(currentInput);
+			if (currentInput.length() >= 10)
+			{
+				JOptionPane.showMessageDialog(converterFrame, "Input is too long.");
+			}
+			else
+			{
 
-			String inBinary = Integer.toBinaryString(binary);
+				// Converts decimal to Binary, then from Binary to Hexadecimal.
+				int binary = Integer.parseInt(currentInput);
 
-			output = new BigInteger(inBinary, 2).toString(16);
-			
-			output = output.toUpperCase();
+				String inBinary = Integer.toBinaryString(binary);
+
+				output = new BigInteger(inBinary, 2).toString(16);
+
+				output = output.toUpperCase();
+			}
+
 		}
 		else if (currentFunction.equals("20"))
 		{
@@ -224,9 +241,7 @@ public class Controller
 		else if (currentFunction.equals("21"))
 		{
 			// Hexadecimal to Decimal.
-
 			// Color test = Color.decode(currentInput);
-
 			// Converts Hex to Decimal in a single step.
 			int temp = Integer.parseInt(currentInput, 16);
 
