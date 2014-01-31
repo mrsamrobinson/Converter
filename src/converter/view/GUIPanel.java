@@ -26,8 +26,8 @@ import java.awt.event.KeyListener;
  * @author Sam Robinson
  * @version 1.4 Created the Panel, added all necessary components to the Panel,
  *          added documentation, added properties to the setupLayout method make
- *          the application window more appealing, added convertButton listener, added Enter Key listener,
- *          changed background color.
+ *          the application window more appealing, added convertButton listener,
+ *          added Enter Key listener, changed background color.
  */
 public class GUIPanel extends JPanel
 {
@@ -35,59 +35,49 @@ public class GUIPanel extends JPanel
 	 * Reference to baseController.
 	 */
 	private Controller baseController;
-
 	/**
 	 * Creates a new JComboBox.
 	 */
 	private JComboBox fromBox;
-
 	/**
 	 * Creates a new JComboBox.
 	 */
 	private JComboBox toBox;
-
 	/**
 	 * Creates a new JTextField.
 	 */
 	public JTextField inputField;
-
 	/**
 	 * Creates a new JTextArea.
 	 */
 	public JTextArea outputArea;
-
 	/**
 	 * Creates a new JButton.
 	 */
 	private JButton convertButton;
-
 	/**
 	 * Creates a new JLabel.
 	 */
 	private JLabel inputLabel;
-
 	/**
 	 * Creates a new JLabel.
 	 */
 	private JLabel outputLabel;
-
 	/**
 	 * Creates a new JLabel.
 	 */
 	private JLabel toLabel;
-
 	/**
 	 * Creates a new SpringLayour for layout of the Panel.
 	 */
 	private SpringLayout baseLayout;
-
 	/**
 	 * Creates a String array to set the contents for the ComboBoxes.
 	 */
 	private String[] baseArray;
 
 	/**
-	 * constructor
+	 * Constructor
 	 * 
 	 * @param baseController
 	 */
@@ -153,7 +143,7 @@ public class GUIPanel extends JPanel
 		this.add(toBox);
 
 		this.setSize(600, 450);
-		this.setBackground(new Color (200, 200, 200));
+		this.setBackground(new Color(200, 200, 200));
 	}
 
 	/**
@@ -202,38 +192,31 @@ public class GUIPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				outputArea.setText("");
-
 				String output = baseController.determineFunction(fromBox.getSelectedIndex(), toBox.getSelectedIndex(), inputField.getText());
-
 				outputArea.append(output);
-
 			}
-			
 		});
-		
-		
+
 		inputField.addKeyListener(new KeyListener()
 		{
 			public void keyPressed(KeyEvent e)
 			{
-				if(e.getKeyChar() == KeyEvent.VK_ENTER)
+				if (e.getKeyChar() == KeyEvent.VK_ENTER)
 				{
 					outputArea.setText("");
-
 					String output = baseController.determineFunction(fromBox.getSelectedIndex(), toBox.getSelectedIndex(), inputField.getText());
-
 					outputArea.append(output);
 				}
 			}
-			
+
 			public void keyReleased(KeyEvent e)
 			{
-				
+
 			}
-			
+
 			public void keyTyped(KeyEvent e)
 			{
-				
+
 			}
 		});
 	}

@@ -84,7 +84,6 @@ public class Controller
 				{
 					isBinary = false;
 				}
-
 			}
 
 			if (isBinary)
